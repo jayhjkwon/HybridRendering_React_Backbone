@@ -1,0 +1,7 @@
+﻿@model IEnumerable<HybridRendering_React_Backbone.Models.User>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+@Html.React("App.UsersView", new { users = Model })
