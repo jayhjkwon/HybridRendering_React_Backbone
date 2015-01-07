@@ -1,4 +1,4 @@
-﻿(function(root, $, _, Backbone){
+﻿(function(root, $, Backbone){
   root.App = root.App || {};
   
   App.Router = Backbone.Router.extend({
@@ -20,4 +20,4 @@
 
   Backbone.history.start({ pushState: true, silent: true });
 
-})(this, jQuery, _, Backbone);
+})(this, jQuery, Backbone);
