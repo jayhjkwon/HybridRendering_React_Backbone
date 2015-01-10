@@ -16,9 +16,9 @@ namespace HybridRendering_React_Backbone.Controllers
             if (_users == null)
             {
                 _users = new List<User>();
-                _users.Add(new User { Id = 1, Name = "Jay", Suburb = "Clayton" });
-                _users.Add(new User { Id = 2, Name = "Sujin", Suburb = "Camberwell" });
-                _users.Add(new User { Id = 3, Name = "Uyoung", Suburb = "Melbourne" });
+                _users.Add(new User { Id = 1, Name = "Jay", Suburb = "Clayton", Birthday = "5/5/1980" });
+                _users.Add(new User { Id = 2, Name = "Sujin", Suburb = "Camberwell", Birthday = "12/31/1990" });
+                _users.Add(new User { Id = 3, Name = "Uyoung", Suburb = "Melbourne", Birthday = "12/9/2014" });
             }
         }
 
@@ -38,6 +38,19 @@ namespace HybridRendering_React_Backbone.Controllers
             else
             {
                 return Json(_users, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [Route("~/users/{id}")]
+        public ActionResult Details(int id)
+        {
+            if (!Request.IsAjaxRequest())
+            {
+                return View(_users.Find(x=>x.Id==id));
+            }
+            else
+            {
+                return Json(_users.Find(x=>x.Id==id), JsonRequestBehavior.AllowGet);
             }
         }
     }

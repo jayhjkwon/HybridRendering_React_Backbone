@@ -10,5 +10,6 @@ namespace HybridRendering_React_Backbone.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Suburb { get; set; }
+        public string Birthday { get; set; }
     }
 }

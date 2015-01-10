@@ -1,4 +1,4 @@
-﻿(function(root, _){
+(function(root, _){
   root.App = root.App || {};
 
   App.HeaderView = React.createClass({
@@ -12,12 +12,12 @@
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">Hybrind Rendering Demo with React and Backbone</a>
+              <a className="navbar-brand" href="#">[Hybrind Rendering Demo with React and Backbone]</a>
             </div>
             <div className="navbar-collapse collapse">
               <ul className="nav navbar-nav">
-                <li><a href="/" onClick={this.moveToHomePage}>Home</a></li>
-                <li><a href="/users" onClick={this.moveToUsersPage}>Users</a></li>
+                <li><a href="/" onClick={this.navigate}>Home</a></li>
+                <li><a href="/users" onClick={this.navigate}>Users</a></li>
               </ul>
             </div>
           </div>
@@ -25,14 +25,10 @@
       );
     },
 
-    moveToHomePage(e) {
+    navigate(e) {
       e.preventDefault();
-      App.router.navigate('/', {trigger: true});
-    },
-
-    moveToUsersPage(e) {
-      e.preventDefault();
-      App.router.navigate('/users', {trigger: true});
+      var url = e.currentTarget.pathname;      
+      App.router.navigate(url, {trigger: true});
     }
   });
 
@@ -46,12 +42,16 @@
 
   App.UserView = React.createClass({
     render() {
+      var detailsUrl = "/users/" + this.props.user.Id;
       return (
         <tr>
           <td>{this.props.user.Id}</td>
           <td>{this.props.user.Name}</td>
           <td>{this.props.user.Suburb}</td>
-          <td><button className="btn btn-primary" onClick={this.deleteUser}>Delete</button></td>
+          <td>
+            <button className="btn btn-primary" onClick={this.deleteUser}>Delete</button>&nbsp;
+            <a href={detailsUrl} className="btn btn-primary" onClick={this.moveToDetailsPage}>Details</a>
+          </td>
         </tr>
       );
     },
@@ -59,6 +59,10 @@
     deleteUser(event){
       var confirmed = confirm("Delete " + this.props.user.Name + " living in " + this.props.user.Suburb + "?");
       this.props.deleteUser(this.props.user.Id);
+    },
+
+    moveToDetailsPage(e) {
+      App.router.navigate(e.currentTarget.pathname, {trigger: true});
     }
   });
 
@@ -89,6 +93,26 @@
         return user.Id !== userId;
       });
       this.setState({users: users});
+    }
+  });
+
+  App.UserDetailsView = React.createClass({
+    render() {
+      return (
+        <div>
+          <h2>User Details</h2>
+          <dl className="dl-horizontal">
+            <dt>Id</dt>
+            <dd>{this.props.user.Id}</dd>
+            <dt>Name</dt>
+            <dd>{this.props.user.Name}</dd>
+            <dt>Suburb</dt>
+            <dd>{this.props.user.Suburb}</dd>
+            <dt>Birthday</dt>
+            <dd>{this.props.user.Birthday}</dd>
+          </dl>
+        </div>
+      );
     }
   });
 
