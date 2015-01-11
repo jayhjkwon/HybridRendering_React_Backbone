@@ -8,11 +8,11 @@ namespace HybridRendering_React_Backbone
 	{
 		public static void Configure()
 		{
-            ReactSiteConfiguration.Configuration
-                .SetUseHarmony(true)
-                .SetReuseJavaScriptEngines(true)
-                .AddScript("~/Scripts/underscore.js")
-                .AddScript("~/Scripts/app.jsx");
+      ReactSiteConfiguration.Configuration
+        .SetUseHarmony(true)
+        .SetReuseJavaScriptEngines(true)
+        .AddScript("~/Scripts/underscore.js")
+        .AddScript("~/Scripts/app.jsx");
 		}
 	}
 }

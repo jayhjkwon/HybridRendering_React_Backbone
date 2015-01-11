@@ -80,8 +80,14 @@
           <td>{this.props.user.Name}</td>
           <td>{this.props.user.Suburb}</td>
           <td>
-            <button className="btn btn-primary" onClick={this.deleteUser} data-loading-text="Loading...">Delete</button>&nbsp;
-            <a href={detailsUrl} className="btn btn-primary" onClick={this.moveToDetailsPage} data-toggle="popover" title="React" data-content={popoverMessage}>Details</a>
+            <button className="btn btn-primary" onClick={this.deleteUser} 
+                    data-loading-text="Loading...">Delete</button>&nbsp;
+            <a href={detailsUrl} 
+                className="btn btn-primary" 
+                onClick={this.moveToDetailsPage} 
+                data-toggle="popover" 
+                title="React" 
+                data-content={popoverMessage}>Details</a>
           </td>
         </tr>
       );
