@@ -184,6 +184,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\backbone.min.map" />
     <Content Include="Scripts\app.jsx" />
+    <None Include="Properties\PublishProfiles\hybrid-react.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

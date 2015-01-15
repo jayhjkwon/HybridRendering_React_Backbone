@@ -46,16 +46,12 @@
     },
 
     render() {
-      var users = this.state.users.map((user) => { 
-        return (<App.UserView user={user} deleteUser={this.deleteUser}/>); 
-      });
-
       return (
         <div>
           <h2>Users</h2>
           <table className="table">
             <tbody>
-              {users}
+              {this.state.users.map( user => <App.UserView user={user} deleteUser={this.deleteUser} />)}
             </tbody>
           </table>
         </div>
